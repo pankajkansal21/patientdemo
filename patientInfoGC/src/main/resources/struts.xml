@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
+
+    <package name="default" extends="struts-default">
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error" />
+        </global-exception-mappings>
+        <action name="" class="com.app.patientInfo.action.LoginAction" method="show">
+            <result name="input">/login.jsp</result>
+            <result name="success">/login.jsp</result>
+        </action>
+
+        <action name="login" class="com.app.patientInfo.action.LoginAction" method="execute">
+            <result name="input">/login.jsp</result>
+            <result name="success">/welcome.jsp</result>
+        </action>
+
+        <action name="logout" class="com.app.patientInfo.action.LoginAction" method="logout">
+            <result name="success">/login.jsp</result>
+            <result name="input">/input.jsp</result>
+        </action>
+
+        <action name="home" class="com.app.patientInfo.action.PatientInformationAction" method="show">
+            <result name="input">/welcome.jsp</result>
+            <result name="success">/welcome.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+
+        <action name="showAddPatient" class="com.app.patientInfo.action.PatientInformationAction" method="show">
+            <result name="success">/addPatientInformation.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+
+        <action name="showEditPatient" class="com.app.patientInfo.action.PatientInformationAction" method="showEditPatient">
+            <result name="success">/addPatientInformation.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+
+        <action name="updatePatient" class="com.app.patientInfo.action.PatientInformationAction" method="updatePatient">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addPatientInformation.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="addPatient" class="com.app.patientInfo.action.PatientInformationAction" method="add">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addPatientInformation.jsp</result>
+            <result name="success">/addPatientInformation.jsp</result>
+        </action>
+
+        <action name="showSearchPatient" class="com.app.patientInfo.action.PatientInformationSearchAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/searchPatientInformation.jsp</result>
+            <result name="input">/searchPatientInformation.jsp</result>
+        </action>
+
+        <action name="searchPatient" class="com.app.patientInfo.action.PatientInformationSearchAction" method="search">
+            <result name="login">/login.jsp</result>
+            <result name="success">/searchPatientInformation.jsp</result>
+            <result name="input">/searchPatientInformation.jsp</result>
+        </action>
+
+        <action name="viewPatient" class="com.app.patientInfo.action.PatientInformationSearchAction" method="getPatient">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+            <result name="input">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="deletePatient" class="com.app.patientInfo.action.PatientInformationSearchAction" method="deletePatient">
+            <result name="login">/login.jsp</result>
+            <result name="success">/searchPatientInformation.jsp</result>
+        </action>
+
+        <action name="showAddVisit" class="com.app.patientInfo.action.PatientVisitAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addPatientVisit.jsp</result>
+        </action>
+
+        <action name="viewVisit" class="com.app.patientInfo.action.PatientVisitAction" method="viewVisit">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientVisit.jsp</result>
+        </action>
+
+        <action name="addVisit" class="com.app.patientInfo.action.PatientVisitAction" method="addVisit">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addPatientVisit.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="deleteVisit" class="com.app.patientInfo.action.PatientVisitAction" method="deleteVisit">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="addPatientMedicine" class="com.app.patientInfo.action.PatientMedicineAction" method="addMedicine">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addPatientMedicine.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="showAddPatientMedicine" class="com.app.patientInfo.action.PatientMedicineAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addPatientMedicine.jsp</result>
+        </action>
+
+        <action name="showSearchPatientMedicine" class="com.app.patientInfo.action.PatientMedicineSearchAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientMedicine.jsp</result>
+            <result name="input">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="searchPatientMedicine" class="com.app.patientInfo.action.PatientMedicineSearchAction" method="search">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientMedicine.jsp</result>
+            <result name="input">/viewPatientMedicine.jsp</result>
+        </action>
+
+        <action name="deletePatientMedicine" class="com.app.patientInfo.action.PatientMedicineSearchAction" method="deleteMedicine">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientMedicine.jsp</result>
+            <result name="input">/viewPatientMedicine.jsp</result>
+        </action>
+
+        <action name="addMedicine" class="com.app.patientInfo.action.MedicineAction" method="save">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addMedicine.jsp</result>
+            <result name="success">/addMedicine.jsp</result>
+        </action>
+
+        <action name="viewMedicines" class="com.app.patientInfo.action.MedicineAction" method="view">
+            <result name="login">/login.jsp</result>
+            <result name="input">/viewMedicines.jsp</result>
+            <result name="success">/viewMedicines.jsp</result>
+        </action>
+
+        <action name="deleteMedicine" class="com.app.patientInfo.action.MedicineAction" method="delete">
+            <result name="login">/login.jsp</result>
+            <result name="input">/viewMedicines.jsp</result>
+            <result name="success">/viewMedicines.jsp</result>
+        </action>
+
+        <action name="showAddMedicine" class="com.app.patientInfo.action.MedicineAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addMedicine.jsp</result>
+        </action>
+
+        <action name="backFromMedicine" class="com.app.patientInfo.action.PatientMedicineSearchAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+
+        <action name="backFromVisit" class="com.app.patientInfo.action.PatientVisitAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+
+        <action name="showAddSeizureFrequency" class="com.app.patientInfo.action.SeizureFrequencyAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addSeizureFrequency.jsp</result>
+        </action>
+
+        <action name="addSeizureFrequency" class="com.app.patientInfo.action.SeizureFrequencyAction" method="addSeizureFrequency">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addSeizureFrequency.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="deleteSeizureFrequency" class="com.app.patientInfo.action.SeizureFrequencyAction" method="deleteSeizureFrequency">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="backFromSeizureFrequency" class="com.app.patientInfo.action.SeizureFrequencyAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+
+        <action name="showAddAdditionalInvestigation" class="com.app.patientInfo.action.AdditionalInvestigationAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addAdditionalInvestigation.jsp</result>
+        </action>
+
+        <action name="addAdditionalInvestigation" class="com.app.patientInfo.action.AdditionalInvestigationAction" method="addAdditionalInvestigation">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addAdditionalInvestigation.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="deleteAdditionalInvestigation" class="com.app.patientInfo.action.AdditionalInvestigationAction" method="deleteAdditionalInvestigation">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="backFromAdditionalInvestigation" class="com.app.patientInfo.action.AdditionalInvestigationAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+
+        <action name="showAddHospitalAdmission" class="com.app.patientInfo.action.HospitalAdmissionAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addHospitalAdmission.jsp</result>
+        </action>
+
+        <action name="addHospitalAdmission" class="com.app.patientInfo.action.HospitalAdmissionAction" method="addHospitalAdmission">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addHospitalAdmission.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="viewHospitalAdmission" class="com.app.patientInfo.action.HospitalAdmissionAction" method="view">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewHospitalAdmission.jsp</result>
+        </action>
+
+        <action name="deleteHospitalAdmission" class="com.app.patientInfo.action.HospitalAdmissionAction" method="deleteHospitalAdmission">
+            <result name="login">/login.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="backFromHospitalAdmission" class="com.app.patientInfo.action.HospitalAdmissionAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+
+
+        <action name="showAddCivilHospitalVisit" class="com.app.patientInfo.action.CivilHospitalVisitAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addCivilHospitalVisit.jsp</result>
+        </action>
+
+        <action name="addCivilHospitalVisit" class="com.app.patientInfo.action.CivilHospitalVisitAction" method="addCivilHospitalVisit">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addCivilHospitalVisit.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="showUpdateCivilHospitalVisit" class="com.app.patientInfo.action.CivilHospitalVisitAction" method="showEdit">
+            <result name="login">/login.jsp</result>
+            <result name="success">/addCivilHospitalVisit.jsp</result>
+        </action>
+
+        <action name="updateCivilHospitalVisit" class="com.app.patientInfo.action.CivilHospitalVisitAction" method="updateCivilHospitalVisit">
+            <result name="login">/login.jsp</result>
+            <result name="input">/addCivilHospitalVisit.jsp</result>
+            <result name="success">/viewPatientInformation.jsp</result>
+        </action>
+
+        <action name="backFromCivilHospitalVisit" class="com.app.patientInfo.action.CivilHospitalVisitAction" method="show">
+            <result name="login">/login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPatient</param>
+                <param name="patientId">${patientInformation.id}</param>
+            </result>
+        </action>
+    </package>
+</struts>
